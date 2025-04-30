@@ -27,13 +27,12 @@ This pipeline follows the **Medallion Architecture** (Bronze, Silver, and Gold l
 
 ```mermaid
 graph TD;
-  BingAPI -->|Ingest| DataFactory
-  DataFactory -->|Store JSON| OneLakeRaw
-  OneLakeRaw -->|Engineered| SynapseEngineering
-  OneLakeRaw -->|Data Science| SynapseScience
-  SynapseEngineering -->|Activate Data| DataActivator
-  SynapseScience -->|Send Alerts| Teams
-  DataActivator -->|Visualize| PowerBI
+  HTTPSource -->|Ingest| DataFactory
+  DataFactory -->|Load Raw| RawStore[Data Lake Gen2 - Raw]
+  RawStore -->|Transform| Databricks
+  Databricks -->|Store Cleaned| TransformedStore[Data Lake Gen2 - Transformed]
+  TransformedStore -->|Serve| Synapse
+  Synapse -->|Report| PowerBI
 ```
 
 ### **1. Data Ingestion**  
