@@ -25,6 +25,17 @@ This pipeline follows the **Medallion Architecture** (Bronze, Silver, and Gold l
 
 ## **📐 Architecture**
 
+```mermaid
+graph TD;
+  BingAPI -->|Ingest| DataFactory
+  DataFactory -->|Store JSON| OneLakeRaw
+  OneLakeRaw -->|Engineered| SynapseEngineering
+  OneLakeRaw -->|Data Science| SynapseScience
+  SynapseEngineering -->|Activate Data| DataActivator
+  SynapseScience -->|Send Alerts| Teams
+  DataActivator -->|Visualize| PowerBI
+```
+
 ### **1. Data Ingestion**  
 - **Azure Data Factory** orchestrates the ingestion of raw CSV files into the **Bronze layer** in **Azure Data Lake Gen2**.  
 
