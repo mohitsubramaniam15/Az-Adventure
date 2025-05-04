@@ -5,6 +5,11 @@
 
 ---
 
+## 📸 Power BI Dashboard Screenshot
+![Streaming Power BI Dashboard](https://github.com/mohitsubramaniam15/mohitsubramaniam15/blob/main/bi_screenshots/azure_adventure.png)
+
+---
+
 ## **📌 Overview**
 
 The **AdventureWorks** project demonstrates a complete **data engineering pipeline** powered by **Azure services** to **ingest, transform, and visualize sales and product data**.  
